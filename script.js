@@ -3,7 +3,7 @@ let huidigeIndex = 0;
 let huidigeWoord = "";
 let blanks = [];
 let keuzesIndex = 0;
-let foutenLaust = [];
+let foutenLijst = [];
 let knoppenGebruikt = false; // Nieuwe variabele
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function startSpel() {
     huidigeIndex = 0;
-    foutenLaust = [];
+    foutenLijst = [];
     woorden = woorden.sort(() => Math.random() - 0.5);
     document.getElementById("keuzes").style.display = "block";
     toonVolgendWoord();
@@ -103,8 +103,8 @@ function kies(keuze) {
         woordEl.innerHTML = gemarkeerd;
     }
 
-    if (keuze !== juiste && !foutenLaust.some(f => f.woord === huidigeWoord)) {
-        foutenLaust.push({
+    if (keuze !== juiste && !foutenLijst.some(f => f.woord === huidigeWoord)) {
+        foutenLijst.push({
             woord: huidigeWoord,
             gekozen: keuze,
             correct: juiste
@@ -123,14 +123,14 @@ function kies(keuze) {
 }
 
 function toonFouten() {
-    const foutenContainer = document.getElementById("fouten-laust");
-    if (foutenLaust.length === 0) {
+    const foutenContainer = document.getElementById("fouten-lijst");
+    if (foutenLijst.length === 0) {
         foutenContainer.innerText = "Goed gedaan! Geen fouten gemaakt.";
         return;
     }
 
     let html = "<h3>Fout beantwoorde woorden:</h3><ul>";
-    foutenLaust.forEach(fout => {
+    foutenLijst.forEach(fout => {
         html += `<li>${fout.woord}</li>`;
     });
     html += "</ul>";
