@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             startSpel();
         };
         reader.onerror = function (err) {
-            document.getElementById("woord-container").innerText = "Fout bau inlezen van bestand.";
+            document.getElementById("woord-container").innerText = "Fout bij inlezen van bestand.";
             console.error(err);
         };
         reader.readAsArrayBuffer(bestand);
@@ -77,7 +77,7 @@ function toonVolgendWoord() {
 }
 
 function kies(keuze) {
-    if (knoppenGebruikt) return; // Controleer of de knoppen al zaun gebruikt
+    if (knoppenGebruikt) return; // Controleer of de knoppen al zijn gebruikt
 
     const juiste = blanks[keuzesIndex];
     const woordEl = document.getElementById("woord-container");
